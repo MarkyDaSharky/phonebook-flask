@@ -14,7 +14,7 @@ def index():
 
 
 
-@app.route('/register')
+@app.route('/register', methods = ["GET", "POST"])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
