@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock %}
+
+{% block content %}
+    <h1>Register Here</h1>
+    
+    <form action="" method='post'>
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <fieldset>
+                {{ form.name.label }}
+                {{ form.name(class='form-control', placeholder='Name') }}
+            </fieldset>
+            <fieldset>
+                {{ form.Phone.label }}
+                {{ form.Phone(class='form-control', placeholder='Phone') }}
+            </fieldset>
+            <fieldset>
+                {{ form.address.label }}
+                {{ form.address(class='form-control', placeholder='Address') }}
+            </fieldset>
+            <fieldset>
+                {{ form.confirm_pass.label }}
+                {{ form.confirm_pass(class='form-control', placeholder='Confirm Password') }}
+            </fieldset>
+        </div>
+        {{ form.submit(class='btn btn-outline-success') }}
+    </form>
+{% endblock %}
