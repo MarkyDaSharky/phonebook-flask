@@ -19,8 +19,8 @@ def register():
     form = RegisterForm()
     if form.validate_on_submit():
         name = form.name.data
-        phone_number = form.phone.data
+        phone = form.phone.data
         address = form.address.data
-        print(name, phone_number, address)
+        print(name, phone, address)
         return redirect(url_for('index'))
     return render_template('register.html', form = form)
