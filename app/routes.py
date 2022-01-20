@@ -13,8 +13,32 @@ def index():
 
 
 
+@app.route('/register', methods=["GET","POST"])
+def register():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        #Get the data from the form
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
+        
+        #check if either the username or the email is already in db
+        user_exists = User.query.filter((User.username == username)|(User.email == email)).all()
 
-@app.route('/register', methods = ["GET", "POST"])
+        #if it is inside the database redirect to register
+        if user_exists:
+            return redirect(url_for('register'))
+
+        #Create a new user instance using form data
+        User(username=username, email=email, password=password)
+
+        return redirect(url_for('index'))
+    return render_template('register.html', form=form)
+
+
+
+
+@app.route('/contact', methods = ["GET", "POST"])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
@@ -23,4 +47,4 @@ def register():
         address = form.address.data
         print(name, phone, address)
         return redirect(url_for('index'))
-    return render_template('register.html', form = form)
+    return render_template('contact.html', form = form)
