@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template, redirect, url_for
 from app.forms import RegisterForm
+from models import User, Contact
 
 
 
